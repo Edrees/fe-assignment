@@ -17,26 +17,29 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const SelectDropdown: React.FC<SelectDropdownProps> = ({ filter, label }) => {
+const SelectDropdown: React.FC<SelectDropdownProps> = ({ filters, label }) => {
   const classes = useStyles();
   const [selected, setFilter] = React.useState('');
 
   const inputLabel = React.useRef<HTMLLabelElement>(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
 
-  // console.log('type', selectType);
-
   React.useEffect(() => {
     setLabelWidth(inputLabel.current!.offsetWidth);
   }, []);
 
   const handleChange = (event: any) => {
-    console.log(event.target.value);
-    selectType(event.target.value);
+    setStateOfFilters(event.target.value);
     setFilter(event.target.value as string);
   };
 
-  console.log('selected', selected);
+  const setStateOfFilters = (item: any) => {
+    filters[0].includes(item)
+      ? selectType(item)
+      : filters[1].includes(item)
+      ? selectColor(item)
+      : selectBrand(item);
+  };
 
   return (
     <FormControl variant="outlined" className={classes.formControl}>
@@ -53,7 +56,7 @@ const SelectDropdown: React.FC<SelectDropdownProps> = ({ filter, label }) => {
           id: 'filter-options'
         }}>
         <option value="" />
-        {filter.map(item => {
+        {filters.map(item => {
           return (
             <option key={item} value={item}>
               {item}
@@ -65,8 +68,6 @@ const SelectDropdown: React.FC<SelectDropdownProps> = ({ filter, label }) => {
   );
 };
 
-// export default SelectDropdown;
-
 const mapStateToProps = (state: any) => {
   return {
     selectedType: state.currentType,
@@ -76,8 +77,6 @@ const mapStateToProps = (state: any) => {
 };
 
 const mapDispatchToProps = {
-  // Whenever selectLanguage is called , the result should be passed
-  // to all of our reducers
   selectedType: selectType
 };
 

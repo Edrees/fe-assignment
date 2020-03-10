@@ -14,8 +14,39 @@ const brandOptions: Array<string> = [];
 const allColorOptions: Array<string> = [];
 const colorOptions: Array<string> = [];
 
-const getTypes = () => {
-  data.map(item => {
+// const getTypes = () => {
+//   data.map(item => {
+//     if (item.type) {
+//       if (!typeOptions.includes(item.type)) {
+//         typeOptions.push(item.type);
+//         typeOptions.sort();
+//       }
+//     }
+//     if (item.colors) {
+//       allColorOptions.push(...item.colors);
+//       allColorOptions.forEach(color => {
+//         if (colorOptions.indexOf(color) === -1) {
+//           colorOptions.push(color);
+//           colorOptions.sort();
+//         }
+//       });
+//     }
+//     if (item.brand) {
+//       brandOptions.push(item.brand);
+//       brandOptions.sort();
+//     }
+//     return false;
+//   });
+// };
+
+const App = () => {
+  // getTypes();
+
+  const sampleData = data.filter(item => {
+    return item.colors.includes('Brown') || item.type === 'Car';
+  });
+
+  sampleData.map(item => {
     if (item.type) {
       if (!typeOptions.includes(item.type)) {
         typeOptions.push(item.type);
@@ -37,17 +68,6 @@ const getTypes = () => {
     }
     return false;
   });
-};
-
-const App = () => {
-  getTypes();
-
-  const sampleData = data.filter(item => {
-    // console.log('0000000', item.colors);
-    // return item.type === 'Car';
-    return item.colors.includes('Brown') || item.type === 'Car';
-  });
-  // console.log('&&&&&&&&&&&&&&&&&&', sampleData);
 
   return (
     <ThemeProvider theme={theme}>

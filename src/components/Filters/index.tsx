@@ -29,18 +29,27 @@ const Filters: React.FC<FiltersProps> = ({
 }) => {
   const classes = useStyles();
 
+  const allArrays = [filterTypes, filterColors, filterBrands];
+
   return (
     <Box className={classes.root}>
       <Grid container>
-        <Grid item xs={12} sm={4} md={3}>
-          <SelectDropdown filter={filterTypes} label="Type Filter" />
-        </Grid>
-        <Grid item xs={12} sm={4} md={3}>
-          <SelectDropdown filter={filterColors} label="Color Filter" />
-        </Grid>
-        <Grid item xs={12} sm={4} md={3}>
-          <SelectDropdown filter={filterBrands} label="Brand Filter" />
-        </Grid>
+        {allArrays.map(el => {
+          return (
+            <Grid key={allArrays.indexOf(el)} item xs={12} sm={4} md={3}>
+              <SelectDropdown
+                filters={el}
+                label={
+                  allArrays.indexOf(el) === 0
+                    ? 'Type Filter'
+                    : allArrays.indexOf(el) === 1
+                    ? 'Color Filter'
+                    : 'Brand Filters'
+                }
+              />
+            </Grid>
+          );
+        })}
         <Grid item xs={12} md={3}>
           <Button
             color="primary"

@@ -7,7 +7,6 @@ export interface FiltersProps {
 }
 
 export interface SelectDropdownProps {
-  filter: ArrayOfString;
+  filters: ArrayOfString;
   label: string;
-  // selectType: any;
 }
