@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -14,17 +15,48 @@ const brandOptions: Array<string> = [];
 const allColorOptions: Array<string> = [];
 const colorOptions: Array<string> = [];
 
-const App = () => {
+interface AppProps {
+  typeValue: string;
+  colorValue: string;
+  brandValue: string;
+}
+
+const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
   const [status, setStatus] = React.useState('Click Me');
   const handleClick = () => {
     setStatus(status === 'Click Me' ? 'Online' : 'Offline');
   };
 
   const sampleData = data.filter(item => {
-    return item.colors.includes('Brown') || item.type === 'Car';
+    if (typeValue) {
+      return (
+        item.type === typeValue
+        // item.colors.includes(colorValue) ||
+        // item.brand === brandValue
+      );
+    }
+    if (colorValue) {
+      return (
+        // item.type === typeValue ||
+        item.colors.includes(colorValue)
+        // item.brand === brandValue
+      );
+    }
+    if (brandValue) {
+      return (
+        // item.type === typeValue ||
+        // item.colors.includes(colorValue) ||
+        item.brand === brandValue
+      );
+    }
+    return data;
   });
 
+  console.log('sampleData', sampleData);
+
   sampleData.map(item => {
+    // console.log('TRIGGERD', item);
+
     if (item.type) {
       if (!typeOptions.includes(item.type)) {
         typeOptions.push(item.type);
@@ -41,9 +73,14 @@ const App = () => {
       });
     }
     if (item.brand) {
-      brandOptions.push(item.brand);
-      brandOptions.sort();
+      if (!brandOptions.includes(item.brand)) {
+        brandOptions.push(item.brand);
+        brandOptions.sort();
+      }
     }
+
+    console.log('brandOptions', brandOptions);
+
     return false;
   });
 
@@ -66,4 +103,12 @@ const App = () => {
   );
 };
 
-export default App;
+const mapStateToProps = (state: any) => {
+  return {
+    typeValue: state.selectedType,
+    colorValue: state.selectedColor,
+    brandValue: state.selectedBrand
+  };
+};
+
+export default connect(mapStateToProps)(App);

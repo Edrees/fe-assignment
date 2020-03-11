@@ -31,6 +31,8 @@ const Filters: React.FC<FiltersProps> = ({
 
   const allArrays = [filterTypes, filterColors, filterBrands];
 
+  console.log('filterBrands', filterBrands);
+
   return (
     <Box className={classes.root}>
       <Grid container>
@@ -44,6 +46,13 @@ const Filters: React.FC<FiltersProps> = ({
               md={3}>
               <SelectDropdown
                 filters={el}
+                selectList={
+                  allArrays.indexOf(el) === 0
+                    ? 'type'
+                    : allArrays.indexOf(el) === 1
+                    ? 'color'
+                    : 'brand'
+                }
                 label={
                   allArrays.indexOf(el) === 0
                     ? 'Type Filter'

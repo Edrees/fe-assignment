@@ -1,31 +1,35 @@
 import { combineReducers } from 'redux';
 
-const selectTypeReducer = (state = '', action: any) => {
+const selectTypeReducer = (selectedType = '', action: any) => {
+  // console.log('selectedTypeReduces', selectedType);
+
   if (action.type === 'SELECTED_TYPE') {
     return action.payload;
   }
 
-  return state;
+  return selectedType;
 };
 
-// const selectColorReducer = (selectColor = '', action: any) => {
-//   if (action.type === 'SELECTED_COLOR') {
-//     return action.payload;
-//   }
+const selectColorReducer = (selectedColor = '', action: any) => {
+  // console.log('selectColorReducer', selectedColor);
+  if (action.type === 'SELECTED_COLOR') {
+    return action.payload;
+  }
 
-//   return selectColor;
-// };
+  return selectedColor;
+};
 
-// const selectBrandReducer = (selectBrand = '', action: any) => {
-//   if (action.type === 'SELECTED_BRAND') {
-//     return action.payload;
-//   }
+const selectBrandReducer = (selectedBrand = '', action: any) => {
+  // console.log('selectBrandReducer', selectedBrand);
+  if (action.type === 'SELECTED_BRAND') {
+    return action.payload;
+  }
 
-//   return selectBrand;
-// };
+  return selectedBrand;
+};
 
 export default combineReducers({
-  selectedType: selectTypeReducer
-  // selectColor: selectColorReducer,
-  // selectBrand: selectBrandReducer
+  selectedType: selectTypeReducer,
+  selectedColor: selectColorReducer,
+  selectedBrand: selectBrandReducer
 });
