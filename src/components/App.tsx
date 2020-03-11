@@ -14,33 +14,11 @@ const brandOptions: Array<string> = [];
 const allColorOptions: Array<string> = [];
 const colorOptions: Array<string> = [];
 
-// const getTypes = () => {
-//   data.map(item => {
-//     if (item.type) {
-//       if (!typeOptions.includes(item.type)) {
-//         typeOptions.push(item.type);
-//         typeOptions.sort();
-//       }
-//     }
-//     if (item.colors) {
-//       allColorOptions.push(...item.colors);
-//       allColorOptions.forEach(color => {
-//         if (colorOptions.indexOf(color) === -1) {
-//           colorOptions.push(color);
-//           colorOptions.sort();
-//         }
-//       });
-//     }
-//     if (item.brand) {
-//       brandOptions.push(item.brand);
-//       brandOptions.sort();
-//     }
-//     return false;
-//   });
-// };
-
 const App = () => {
-  // getTypes();
+  const [status, setStatus] = React.useState('Click Me');
+  const handleClick = () => {
+    setStatus(status === 'Click Me' ? 'Online' : 'Offline');
+  };
 
   const sampleData = data.filter(item => {
     return item.colors.includes('Brown') || item.type === 'Car';
@@ -80,12 +58,8 @@ const App = () => {
           filterBrands={brandOptions}
         />
         <Cards data={sampleData} />
-        <Button
-          color="primary"
-          variant="contained"
-          // onClick={() => setStatus(status === 'Offline' ? 'Online' : 'Offline')}
-        >
-          Click Me
+        <Button color="primary" variant="contained" onClick={handleClick}>
+          {status}
         </Button>
       </Container>
     </ThemeProvider>

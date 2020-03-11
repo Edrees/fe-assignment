@@ -1,11 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import { SelectDropdownProps } from './types';
-import { selectType, selectColor, selectBrand } from '../../redux/actions';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,16 +27,7 @@ const SelectDropdown: React.FC<SelectDropdownProps> = ({ filters, label }) => {
   }, []);
 
   const handleChange = (event: any) => {
-    setStateOfFilters(event.target.value);
     setFilter(event.target.value as string);
-  };
-
-  const setStateOfFilters = (item: any) => {
-    filters[0].includes(item)
-      ? selectType(item)
-      : filters[1].includes(item)
-      ? selectColor(item)
-      : selectBrand(item);
   };
 
   return (
@@ -68,22 +57,4 @@ const SelectDropdown: React.FC<SelectDropdownProps> = ({ filters, label }) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    selectedType: state.currentType,
-    selectColor: state.currentColor,
-    selectBrand: state.currentBrand
-  };
-};
-
-const mapDispatchToProps = {
-  selectedType: selectType
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectDropdown);
-
-// export default connect(mapStateToProps, {
-//   currentType: selectedType,
-//   currentColor: selectedColor,
-//   currentBrand: selectedBrand
-// },)(SelectDropdown);
+export default SelectDropdown;

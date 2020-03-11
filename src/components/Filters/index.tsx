@@ -36,7 +36,12 @@ const Filters: React.FC<FiltersProps> = ({
       <Grid container>
         {allArrays.map(el => {
           return (
-            <Grid key={allArrays.indexOf(el)} item xs={12} sm={4} md={3}>
+            <Grid
+              key={`list_${allArrays.indexOf(el)}`}
+              item
+              xs={12}
+              sm={4}
+              md={3}>
               <SelectDropdown
                 filters={el}
                 label={

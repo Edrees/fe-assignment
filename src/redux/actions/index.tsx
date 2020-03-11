@@ -11,18 +11,18 @@ export const selectType = (type: string) => {
   };
 };
 
-export const selectColor = (color: string) => {
-  console.log('action.color', color);
-  return {
-    type: SELECTED_COLOR,
-    payload: color
-  };
-};
+// export const selectColor = (color: string) => {
+//   console.log('action.color', color);
+//   return {
+//     type: SELECTED_COLOR,
+//     payload: color
+//   };
+// };
 
-export const selectBrand = (brand: string) => {
-  console.log('action.brand', brand);
-  return {
-    type: SELECTED_BRAND,
-    payload: brand
-  };
-};
+// export const selectBrand = (brand: string) => {
+//   console.log('action.brand', brand);
+//   return {
+//     type: SELECTED_BRAND,
+//     payload: brand
+//   };
+// };
