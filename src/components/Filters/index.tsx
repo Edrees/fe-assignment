@@ -1,10 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import SelectDropdown from './SelectDropdown';
-import { FiltersProps } from './types';
+import { FiltersProps } from '../../types';
+import { selectType, selectColor, selectBrand } from '../../redux/actions';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,21 +27,35 @@ const useStyles = makeStyles((theme: Theme) =>
 const Filters: React.FC<FiltersProps> = ({
   filterTypes,
   filterBrands,
-  filterColors
+  filterColors,
+  selectedType,
+  selectedColor,
+  selectedBrand
 }) => {
   const classes = useStyles();
+  const allFilterArrays = [filterTypes, filterBrands, filterColors];
 
-  const allArrays = [filterTypes, filterColors, filterBrands];
+  const handleClick = () => {
+    selectedType('');
+    selectedColor('');
+    selectedBrand('');
+  };
 
-  console.log('filterBrands', filterBrands);
+  const passIndex = (item: number) => {
+    if (item === 0) {
+      return 'type'
+    } else if (item === 1) {
+      return 'brand'
+    } else { return 'color' }
+  }
 
   return (
     <Box className={classes.root}>
       <Grid container>
-        {allArrays.map(el => {
+        {allFilterArrays.map(el => {
           return (
             <Grid
-              key={`list_${allArrays.indexOf(el)}`}
+              key={`list_${allFilterArrays.indexOf(el)}`}
               item
               xs={12}
               sm={4}
@@ -47,18 +63,7 @@ const Filters: React.FC<FiltersProps> = ({
               <SelectDropdown
                 filters={el}
                 selectList={
-                  allArrays.indexOf(el) === 0
-                    ? 'type'
-                    : allArrays.indexOf(el) === 1
-                    ? 'color'
-                    : 'brand'
-                }
-                label={
-                  allArrays.indexOf(el) === 0
-                    ? 'Type Filter'
-                    : allArrays.indexOf(el) === 1
-                    ? 'Color Filter'
-                    : 'Brand Filters'
+                  passIndex(allFilterArrays.indexOf(el))
                 }
               />
             </Grid>
@@ -68,6 +73,7 @@ const Filters: React.FC<FiltersProps> = ({
           <Button
             color="primary"
             variant="contained"
+            onClick={handleClick}
             className={classes.clearButton}>
             Clear Filters
           </Button>
@@ -77,4 +83,16 @@ const Filters: React.FC<FiltersProps> = ({
   );
 };
 
-export default Filters;
+const mapStateToProps = (state: any) => {
+  return {
+    typeValue: state.selectedType,
+    colorValue: state.selectedColor,
+    brandValue: state.selectedBrand
+  };
+};
+
+export default connect(mapStateToProps, {
+  selectedType: selectType,
+  selectedColor: selectColor,
+  selectedBrand: selectBrand
+})(Filters);

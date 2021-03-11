@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ThemeProvider } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import { data } from '../service/';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -9,6 +8,7 @@ import theme from '../theme';
 import Header from './Header';
 import Filters from './Filters';
 import Cards from './Cards';
+import Footer from './Footer';
 
 const typeOptions: Array<string> = [];
 const brandOptions: Array<string> = [];
@@ -22,47 +22,38 @@ interface AppProps {
 }
 
 const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
-  const [status, setStatus] = React.useState('Click Me');
-  const handleClick = () => {
-    setStatus(status === 'Click Me' ? 'Online' : 'Offline');
-  };
-
-  const sampleData = data.filter(item => {
-    if (typeValue) {
+  const actualData = data.filter(item => {
+    if (typeValue || brandValue || colorValue) {
       return (
-        item.type === typeValue
-        // item.colors.includes(colorValue) ||
-        // item.brand === brandValue
-      );
-    }
-    if (colorValue) {
-      return (
-        // item.type === typeValue ||
-        item.colors.includes(colorValue)
-        // item.brand === brandValue
-      );
-    }
-    if (brandValue) {
-      return (
-        // item.type === typeValue ||
-        // item.colors.includes(colorValue) ||
+        item.type === typeValue ||
+        item.colors.includes(colorValue) ||
         item.brand === brandValue
       );
     }
+
     return data;
   });
 
-  console.log('sampleData', sampleData);
+  typeOptions.length = 0;
+  brandOptions.length = 0;
+  allColorOptions.length = 0;
+  colorOptions.length = 0;
 
-  sampleData.map(item => {
-    // console.log('TRIGGERD', item);
-
+  actualData.map(item => {
     if (item.type) {
       if (!typeOptions.includes(item.type)) {
         typeOptions.push(item.type);
         typeOptions.sort();
       }
     }
+
+    if (item.brand) {
+      if (!brandOptions.includes(item.brand)) {
+        brandOptions.push(item.brand);
+        brandOptions.sort();
+      }
+    }
+
     if (item.colors) {
       allColorOptions.push(...item.colors);
       allColorOptions.forEach(color => {
@@ -72,14 +63,6 @@ const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
         }
       });
     }
-    if (item.brand) {
-      if (!brandOptions.includes(item.brand)) {
-        brandOptions.push(item.brand);
-        brandOptions.sort();
-      }
-    }
-
-    console.log('brandOptions', brandOptions);
 
     return false;
   });
@@ -91,14 +74,12 @@ const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
       <Container>
         <Filters
           filterTypes={typeOptions}
-          filterColors={colorOptions}
           filterBrands={brandOptions}
+          filterColors={colorOptions}
         />
-        <Cards data={sampleData} />
-        <Button color="primary" variant="contained" onClick={handleClick}>
-          {status}
-        </Button>
+        <Cards data={actualData} />
       </Container>
+      <Footer />
     </ThemeProvider>
   );
 };

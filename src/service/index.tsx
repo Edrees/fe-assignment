@@ -1,17 +1,12 @@
-interface Data {
-  id: number;
-  type: string;
-  brand: string;
-  colors: string[];
-  img: string;
-}
+import { DataItemProps } from '../types'
 
-export const data: Array<Data> = [
+export const data: Array<DataItemProps> = [
   {
     id: 1,
     type: 'Car',
     brand: 'Bugatti Veyron',
     colors: ['Red', 'Black'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Bugatti_Veyron_16.4_%E2%80%93_Frontansicht_%281%29%2C_5._April_2012%2C_D%C3%BCsseldorf.jpg/520px-Bugatti_Veyron_16.4_%E2%80%93_Frontansicht_%281%29%2C_5._April_2012%2C_D%C3%BCsseldorf.jpg'
   },
@@ -20,6 +15,7 @@ export const data: Array<Data> = [
     type: 'Airplane',
     brand: 'Boeing 787 Dreamliner',
     colors: ['Red', 'White', 'Black', 'Green'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/All_Nippon_Airways_Boeing_787-8_Dreamliner_JA801A_OKJ_in_flight.jpg/600px-All_Nippon_Airways_Boeing_787-8_Dreamliner_JA801A_OKJ_in_flight.jpg'
   },
@@ -28,6 +24,7 @@ export const data: Array<Data> = [
     type: 'Train',
     brand: 'USRA 0-6-6',
     colors: ['Yellow', 'White', 'Black'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/d/d2/SRC_89_19930000_PA_Strasburg.jpg'
   },
@@ -36,6 +33,7 @@ export const data: Array<Data> = [
     type: 'Airplane',
     brand: 'Canadair North Star',
     colors: ['Red', 'Blue', 'Yellow', 'Green'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/BOAC_C-4_Argonaut_Heathrow_1954.jpg/600px-BOAC_C-4_Argonaut_Heathrow_1954.jpg'
   },
@@ -44,6 +42,7 @@ export const data: Array<Data> = [
     type: 'Airplane',
     brand: 'Airbus A400M Atlas',
     colors: ['Red', 'White'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/A400M-1969.jpg/600px-A400M-1969.jpg'
   },
@@ -52,6 +51,7 @@ export const data: Array<Data> = [
     type: 'Airplane',
     brand: 'Bloch MB.131',
     colors: ['Yellow', 'Blue', 'Brown'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/e/e5/Bloch_MB_131_San_Diego_Air_%26_Space_Museum_3.jpg'
   },
@@ -60,6 +60,7 @@ export const data: Array<Data> = [
     type: 'Train',
     brand: 'Prairie 2-6-2',
     colors: ['Red', 'White', 'Grey'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/CFR_Steam_locomotive.jpg/600px-CFR_Steam_locomotive.jpg'
   },
@@ -68,6 +69,7 @@ export const data: Array<Data> = [
     type: 'Train',
     brand: 'EMD GP40',
     colors: ['Black', 'Grey', 'White'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/EMD_GP40_B%26M_339_Wells_Maine.jpg/600px-EMD_GP40_B%26M_339_Wells_Maine.jpg'
   },
@@ -76,6 +78,7 @@ export const data: Array<Data> = [
     type: 'Train',
     brand: 'Amer 4-4-0',
     colors: ['Red', 'Black'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/440woodcut.jpg/600px-440woodcut.jpg'
   },
@@ -84,6 +87,7 @@ export const data: Array<Data> = [
     type: 'Car',
     brand: 'Ferrari F40',
     colors: ['Red', 'Yellow'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/F40_Ferrari_20090509.jpg/560px-F40_Ferrari_20090509.jpg'
   },
@@ -92,6 +96,7 @@ export const data: Array<Data> = [
     type: 'Car',
     brand: 'Lamborghini Huracán',
     colors: ['Black', 'White'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/2014-03-04_Geneva_Motor_Show_1379.JPG/440px-2014-03-04_Geneva_Motor_Show_1379.JPG'
   },
@@ -100,6 +105,7 @@ export const data: Array<Data> = [
     type: 'Car',
     brand: 'Porsche Carrera GT',
     colors: ['Green', 'Yellow'],
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Porsche_Carrera_GT_-_Goodwood_Breakfast_Club_%28July_2008%29.jpg/440px-Porsche_Carrera_GT_-_Goodwood_Breakfast_Club_%28July_2008%29.jpg'
   }
