@@ -9,17 +9,12 @@ import Header from './Header';
 import Filters from './Filters';
 import Cards from './Cards';
 import Footer from './Footer';
+import { AppProps } from '../types'
 
 const typeOptions: Array<string> = [];
 const brandOptions: Array<string> = [];
 const allColorOptions: Array<string> = [];
 const colorOptions: Array<string> = [];
-
-interface AppProps {
-  typeValue: string;
-  colorValue: string;
-  brandValue: string;
-}
 
 const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
   const actualData = data.filter(item => {
@@ -67,15 +62,28 @@ const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
     return false;
   });
 
+  let filterData: any = [
+    {
+      type: 'type',
+      items: typeOptions
+    },
+    {
+      type: 'brand',
+      items: brandOptions
+    },
+    {
+      type: 'color',
+      items: colorOptions
+    },
+  ]
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
       <Container>
         <Filters
-          filterTypes={typeOptions}
-          filterBrands={brandOptions}
-          filterColors={colorOptions}
+          allFilterData={filterData}
         />
         <Cards data={actualData} />
       </Container>

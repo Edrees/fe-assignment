@@ -1,3 +1,9 @@
+export interface AppProps {
+  typeValue: string;
+  colorValue: string;
+  brandValue: string;
+}
+
 export interface DataItemProps {
   id: number;
   type: string;
@@ -7,6 +13,7 @@ export interface DataItemProps {
   img: string;
 }
 
+// Cards/index.tsx
 export interface CardsProps {
   data: Array<DataItemProps>;
 }
@@ -17,17 +24,18 @@ interface Selections {
   selectedBrand: Function;
 }
 
+// Filters/index.tsx
 export interface FiltersProps extends Selections {
-  filterTypes: Array<string>;
-  filterBrands: Array<string>;
-  filterColors: Array<string>;
+  allFilterData: [
+    {
+      type: string,
+      items: [],
+    }
+  ]
 }
 
-export interface SelectDropdownProps extends Selections {
-  filters: Array<string>;
-  selectList?: number | string;
-  // label: string;
-  typeValue: string;
-  colorValue: string;
-  brandValue: string;
+// Filters/SelectDropdown.tsx
+export interface SelectDropdownProps extends Selections, AppProps {
+  filtersArray: Array<string>;
+  selectList: string;
 }

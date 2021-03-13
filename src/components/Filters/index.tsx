@@ -25,15 +25,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const Filters: React.FC<FiltersProps> = ({
-  filterTypes,
-  filterBrands,
-  filterColors,
+  allFilterData,
   selectedType,
   selectedColor,
   selectedBrand
 }) => {
   const classes = useStyles();
-  const allFilterArrays = [filterTypes, filterBrands, filterColors];
 
   const handleClick = () => {
     selectedType('');
@@ -41,30 +38,21 @@ const Filters: React.FC<FiltersProps> = ({
     selectedBrand('');
   };
 
-  const passIndex = (item: number) => {
-    if (item === 0) {
-      return 'type'
-    } else if (item === 1) {
-      return 'brand'
-    } else { return 'color' }
-  }
 
   return (
     <Box className={classes.root}>
       <Grid container>
-        {allFilterArrays.map(el => {
+        {allFilterData.map(el => {
           return (
             <Grid
-              key={`list_${allFilterArrays.indexOf(el)}`}
+              key={`list_${el.type}`}
               item
               xs={12}
               sm={4}
               md={3}>
               <SelectDropdown
-                filters={el}
-                selectList={
-                  passIndex(allFilterArrays.indexOf(el))
-                }
+                filtersArray={el.items}
+                selectList={el.type}
               />
             </Grid>
           );
