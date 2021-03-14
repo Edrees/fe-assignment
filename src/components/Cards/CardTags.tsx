@@ -10,40 +10,63 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2),
     },
     label: {
+      position: 'relative',
       height: theme.spacing(3),
-      width: theme.spacing(7),
-      marginRight: '2px',
+      width: theme.spacing(3),
+      marginRight: theme.spacing(2),
       display: 'inline-flex',
       justifyContent: 'center',
       alignItems: 'center',
+      borderRadius: '2px',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: '-1px',
+        right: '-10px',
+        width: '0',
+        height: '0',
+        borderTop: '12px solid transparent',
+        borderBottom: '12px solid transparent',
+        borderLeft: '9px solid transparent',
+        borderLeftColor: 'inherit',
+      },
       '&.Black': {
+        border: '1px solid #000',
         backgroundColor: '#000',
         color: '#ffffff',
       },
       '&.Blue': {
+        border: '1px solid #198aea',
         backgroundColor: '#198aea',
         color: '#ffffff',
       },
       '&.Brown': {
+        border: '1px solid #a95915',
         backgroundColor: '#a95915',
         color: '#ffffff',
       },
       '&.Green': {
+        border: '1px solid #1a1',
         backgroundColor: '#1a1',
         color: '#ffffff',
       },
       '&.Grey': {
+        border: '1px solid #999',
         backgroundColor: '#999',
         color: '#ffffff',
       },
+      '&.Pink': {
+        border: '1px solid #f99',
+        backgroundColor: '#f99',
+        color: '#ffffff',
+      },
       '&.Red': {
+        border: '1px solid #e11',
         backgroundColor: '#e11',
         color: '#ffffff',
       },
-      '&.White': {
-        backgroundColor: '#ffffff',
-      },
       '&.Yellow': {
+        border: '1px solid #ff0',
         backgroundColor: '#ff0',
       }
     },
@@ -66,8 +89,7 @@ const CardTags: React.FC<CardTagsProps> = ({ tags }) => {
             return 0
           })
           .map(color => (
-            <Box component="span" boxShadow={1} key={color} className={`${classes.label} ${color}`}>
-              {color}
+            <Box component="span" key={color} className={`${classes.label} ${color}`}>
             </Box>
           ))
       }

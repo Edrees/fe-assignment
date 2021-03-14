@@ -14,7 +14,7 @@ export const data: Array<DataItemProps> = [
     id: 2,
     type: 'Airplane',
     brand: 'Boeing 787 Dreamliner',
-    colors: ['Red', 'White', 'Black', 'Green'],
+    colors: ['Red', 'Pink', 'Black', 'Green'],
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/All_Nippon_Airways_Boeing_787-8_Dreamliner_JA801A_OKJ_in_flight.jpg/600px-All_Nippon_Airways_Boeing_787-8_Dreamliner_JA801A_OKJ_in_flight.jpg'
@@ -23,7 +23,7 @@ export const data: Array<DataItemProps> = [
     id: 3,
     type: 'Train',
     brand: 'USRA 0-6-6',
-    colors: ['Yellow', 'White', 'Black'],
+    colors: ['Yellow', 'Pink', 'Black'],
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/d/d2/SRC_89_19930000_PA_Strasburg.jpg'
@@ -41,7 +41,7 @@ export const data: Array<DataItemProps> = [
     id: 5,
     type: 'Airplane',
     brand: 'Airbus A400M Atlas',
-    colors: ['Red', 'White'],
+    colors: ['Red', 'Pink'],
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/A400M-1969.jpg/600px-A400M-1969.jpg'
@@ -59,7 +59,7 @@ export const data: Array<DataItemProps> = [
     id: 7,
     type: 'Train',
     brand: 'Prairie 2-6-2',
-    colors: ['Red', 'White', 'Grey'],
+    colors: ['Red', 'Pink', 'Grey'],
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/CFR_Steam_locomotive.jpg/600px-CFR_Steam_locomotive.jpg'
@@ -68,7 +68,7 @@ export const data: Array<DataItemProps> = [
     id: 8,
     type: 'Train',
     brand: 'EMD GP40',
-    colors: ['Black', 'Grey', 'White'],
+    colors: ['Black', 'Grey', 'Pink'],
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/EMD_GP40_B%26M_339_Wells_Maine.jpg/600px-EMD_GP40_B%26M_339_Wells_Maine.jpg'
@@ -95,7 +95,7 @@ export const data: Array<DataItemProps> = [
     id: 11,
     type: 'Car',
     brand: 'Lamborghini Huracán',
-    colors: ['Black', 'White'],
+    colors: ['Black', 'Pink'],
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.',
     img:
       'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/2014-03-04_Geneva_Motor_Show_1379.JPG/440px-2014-03-04_Geneva_Motor_Show_1379.JPG'
