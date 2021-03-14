@@ -18,6 +18,11 @@ export interface CardsProps {
   data: Array<DataItemProps>;
 }
 
+// Cards/CardTags.tsx
+export interface CardTagsProps {
+  tags: Array<string>;
+}
+
 interface Selections {
   selectedType: Function;
   selectedColor: Function;

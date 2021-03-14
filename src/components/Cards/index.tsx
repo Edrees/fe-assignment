@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { CardsProps } from '../../types';
+import CardTags from './CardTags';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,6 +39,7 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
                 image={item.img}
                 title={item.brand}
               />
+              <CardTags tags={item.colors} />
             </Card>
           </Grid>
         );
