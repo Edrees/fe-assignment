@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       padding: theme.spacing(1),
       minHeight: '50px',
-      marginTop: theme.spacing(2)
-    }
+      marginTop: theme.spacing(2),
+    },
   })
 );
 

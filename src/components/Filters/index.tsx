@@ -13,14 +13,14 @@ const useStyles = makeStyles((theme: Theme) =>
     root: {
       border: '1px solid #ccc',
       marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(2)
+      marginBottom: theme.spacing(2),
     },
     clearButton: {
       height: '54px',
       minWidth: '80px',
       width: 'calc(100% - 16px)',
-      margin: theme.spacing(1)
-    }
+      margin: theme.spacing(1),
+    },
   })
 );
 
@@ -28,7 +28,7 @@ const Filters: React.FC<FiltersProps> = ({
   allFilterData,
   selectedType,
   selectedColor,
-  selectedBrand
+  selectedBrand,
 }) => {
   const classes = useStyles();
 
@@ -38,22 +38,13 @@ const Filters: React.FC<FiltersProps> = ({
     selectedBrand('');
   };
 
-
   return (
     <Box className={classes.root}>
       <Grid container>
-        {allFilterData.map(el => {
+        {allFilterData.map((el) => {
           return (
-            <Grid
-              key={`list_${el.type}`}
-              item
-              xs={12}
-              sm={4}
-              md={3}>
-              <SelectDropdown
-                filtersArray={el.items}
-                selectList={el.type}
-              />
+            <Grid key={`list_${el.type}`} item xs={12} sm={4} md={3}>
+              <SelectDropdown filtersArray={el.items} selectList={el.type} />
             </Grid>
           );
         })}
@@ -75,12 +66,12 @@ const mapStateToProps = (state: any) => {
   return {
     typeValue: state.selectedType,
     colorValue: state.selectedColor,
-    brandValue: state.selectedBrand
+    brandValue: state.selectedBrand,
   };
 };
 
 export default connect(mapStateToProps, {
   selectedType: selectType,
   selectedColor: selectColor,
-  selectedBrand: selectBrand
+  selectedBrand: selectBrand,
 })(Filters);

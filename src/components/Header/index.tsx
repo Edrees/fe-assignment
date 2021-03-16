@@ -11,8 +11,8 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       padding: theme.spacing(1),
-      minHeight: '80px'
-    }
+      minHeight: '80px',
+    },
   })
 );
 

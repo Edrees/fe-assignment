@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     media: {
       backgroundSize: 'cover',
-      height: 220
-    }
+      height: 220,
+    },
   })
 );
 
@@ -22,7 +22,7 @@ const Cards: React.FC<CardsProps> = ({ data }) => {
 
   return (
     <Grid container spacing={3}>
-      {data.map(item => {
+      {data.map((item) => {
         return (
           <Grid key={item.id} item xs={12} sm={6} md={4} lg={3}>
             <Card>

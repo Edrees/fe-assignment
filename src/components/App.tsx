@@ -9,7 +9,7 @@ import Header from './Header';
 import Filters from './Filters';
 import Cards from './Cards';
 import Footer from './Footer';
-import { AppProps } from '../types'
+import { AppProps } from '../types';
 
 const typeOptions: Array<string> = [];
 const brandOptions: Array<string> = [];
@@ -17,7 +17,7 @@ const allColorOptions: Array<string> = [];
 const colorOptions: Array<string> = [];
 
 const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
-  const actualData = data.filter(item => {
+  const actualData = data.filter((item) => {
     if (typeValue || brandValue || colorValue) {
       return (
         item.type === typeValue ||
@@ -34,7 +34,7 @@ const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
   allColorOptions.length = 0;
   colorOptions.length = 0;
 
-  actualData.map(item => {
+  actualData.map((item) => {
     if (item.type) {
       if (!typeOptions.includes(item.type)) {
         typeOptions.push(item.type);
@@ -51,7 +51,7 @@ const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
 
     if (item.colors) {
       allColorOptions.push(...item.colors);
-      allColorOptions.forEach(color => {
+      allColorOptions.forEach((color) => {
         if (colorOptions.indexOf(color) === -1) {
           colorOptions.push(color);
           colorOptions.sort();
@@ -65,26 +65,24 @@ const App: React.FC<AppProps> = ({ typeValue, colorValue, brandValue }) => {
   let filterData: any = [
     {
       type: 'type',
-      items: typeOptions
+      items: typeOptions,
     },
     {
       type: 'brand',
-      items: brandOptions
+      items: brandOptions,
     },
     {
       type: 'color',
-      items: colorOptions
+      items: colorOptions,
     },
-  ]
+  ];
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
       <Container>
-        <Filters
-          allFilterData={filterData}
-        />
+        <Filters allFilterData={filterData} />
         <Cards data={actualData} />
       </Container>
       <Footer />
@@ -96,7 +94,7 @@ const mapStateToProps = (state: any) => {
   return {
     typeValue: state.selectedType,
     colorValue: state.selectedColor,
-    brandValue: state.selectedBrand
+    brandValue: state.selectedBrand,
   };
 };
 

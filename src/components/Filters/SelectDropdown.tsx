@@ -12,21 +12,20 @@ const useStyles = makeStyles((theme: Theme) =>
     formControl: {
       borderRadius: '2px',
       width: 'calc(100% - 16px)',
-      margin: theme.spacing(1)
+      margin: theme.spacing(1),
     },
   })
 );
 
 const SelectDropdown: React.FC<SelectDropdownProps> = ({
-  filters,
+  filtersArray,
   selectList,
-  // label,
   selectedType,
-  typeValue,
-  selectedColor,
-  colorValue,
   selectedBrand,
-  brandValue
+  selectedColor,
+  typeValue,
+  brandValue,
+  colorValue,
 }) => {
   const classes = useStyles();
   const inputLabel = React.useRef<HTMLLabelElement>(null);
@@ -40,58 +39,50 @@ const SelectDropdown: React.FC<SelectDropdownProps> = ({
     const currentValue = event.target.value;
 
     if (selectList === 'type') {
-      if (currentValue) {
-        selectBrand('');
-        selectedColor('');
-      }
+      selectedBrand('');
+      selectedColor('');
       selectedType(currentValue);
     }
     if (selectList === 'brand') {
-      if (currentValue) {
-        selectedType('');
-        selectedColor('');
-      }
+      selectedType('');
+      selectedColor('');
       selectedBrand(currentValue);
     }
     if (selectList === 'color') {
-      if (currentValue) {
-        selectedType('');
-        selectBrand('');
-      }
+      selectedType('');
+      selectedBrand('');
       selectedColor(currentValue);
     }
   };
+
+  console.log('typeValue', typeValue);
 
   return (
     <FormControl variant="outlined" className={classes.formControl}>
       <InputLabel ref={inputLabel} htmlFor="filter-options">
         {selectList === 'type'
           ? 'Type Filter'
-          : selectList === 'color'
-            ? 'Color Filter'
-            : selectList === 'brand'
-              ? 'Brand Filter'
-              : null}
+          : selectList === 'brand'
+            ? 'Brand Filter'
+            : 'Color Tag Filter'}
       </InputLabel>
       <Select
         native
         value={
           selectList === 'type'
             ? typeValue
-            : selectList === 'color'
-              ? colorValue
-              : selectList === 'brand'
-                ? brandValue
-                : null
+            : selectList === 'brand'
+              ? brandValue
+              : colorValue
         }
         onChange={handleChange}
         labelWidth={labelWidth}
         inputProps={{
           name: 'filters',
-          id: 'filter-options'
+          id: 'filter-options',
         }}>
         <option value="" />
-        {filters.map(item => {
+        {filtersArray.map((item) => {
           return (
             <option key={item} value={item}>
               {item}
@@ -107,12 +98,12 @@ const mapStateToProps = (state: any) => {
   return {
     typeValue: state.selectedType,
     colorValue: state.selectedColor,
-    brandValue: state.selectedBrand
+    brandValue: state.selectedBrand,
   };
 };
 
 export default connect(mapStateToProps, {
   selectedType: selectType,
   selectedColor: selectColor,
-  selectedBrand: selectBrand
+  selectedBrand: selectBrand,
 })(SelectDropdown);
